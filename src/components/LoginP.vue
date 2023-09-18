@@ -1,4 +1,21 @@
 <template>
+    <div>
+    <v-toolbar
+      dark
+      prominent
+      image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+    >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn>
+        <v-icon></v-icon>
+      </v-btn>
+    </v-toolbar>
+  </div>
 <div  class = "d-flex align-center justify-center" style = "height: 100vh" > 
 <v-sheet width = " 400 " class =" mx - auto " > 
 <v-form  fast-fail  submit.prevent = "iniciar sesión" > 

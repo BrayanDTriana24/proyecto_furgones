@@ -1,32 +1,198 @@
 <template>
-   <LoginP></LoginP>
-   <MenuP></MenuP>
-  
+  <v-app>
+    <v-navigation-drawer color="#2962FF" v-model="drawer" :rail="rail" permanent @click="rail = false" position="top">
+      <v-list dense nav >
+        <v-list-item @click.stop="rail = !rail"
+          prepend-icon="mdi mdi-microsoft-xbox-controller-menu"
+          title="FURGOSANDER S. A. S"
+          value="Menu"
+          style="margin-top: 8px; margin-bottom: 8px; font-size: 20px"
+        ></v-list-item>
+       
+        <v-divider></v-divider>
+        <!--MENU-->
+
+        <v-list-item
+          prepend-icon="mdi mdi-login"
+          title="Iniciar Sesión"
+          value="Login"
+          router-link to="/LoginP"
+          style="margin-top: 20px;"
+        ></v-list-item>
+
+
+        <v-list-item
+          prepend-icon="mdi mdi-home-account"
+          title="Inicio"
+          value="Home"
+          router-link to="../"
+          style="margin-top: 20px;"
+        ></v-list-item>
+       
+        <!--SUB MENU-->
+        <v-list-item-group>
+          <v-list-item  
+          @click="toggleSubMenu('subMenu1')"
+          prepend-icon="mmdi mdi-truck"
+          value="Furgones"
+          router-link to="/furgones"
+          style="margin-bottom: 1px;">
+            <v-list-item-content>
+              <v-list-item-title >Furgones</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-slide-y-transition>
+            <v-list-item-group v-if="openSubMenus.includes('subMenu1')">
+              <!-- <v-list-item prepend-icon="mdi mdi-basket-plus" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/Crear_producto">
+                <v-list-item-content>
+                  <v-list-item-title>Crear producto</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>-->
+              <v-list-item prepend-icon="mdi mdi-truck-outline" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/furgon1">
+                <v-list-item-content>
+                  <v-list-item-title>Furgón 1</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-slide-y-transition>
+
+          <v-slide-y-transition>
+            <v-list-item-group v-if="openSubMenus.includes('subMenu1')">
+              <!-- <v-list-item prepend-icon="mdi mdi-basket-plus" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/Crear_producto">
+                <v-list-item-content>
+                  <v-list-item-title>Crear producto</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>-->
+              <v-list-item prepend-icon="mdi mdi-truck-outline" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/furgon2">
+                <v-list-item-content>
+                  <v-list-item-title>Furgón 2</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-slide-y-transition>
+
+          <v-slide-y-transition>
+            <v-list-item-group v-if="openSubMenus.includes('subMenu1')">
+              <!-- <v-list-item prepend-icon="mdi mdi-basket-plus" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/Crear_producto">
+                <v-list-item-content>
+                  <v-list-item-title>Crear producto</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>-->
+              <v-list-item prepend-icon="mdi mdi-truck-outline" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/furgon3">
+                <v-list-item-content>
+                  <v-list-item-title>Furgón 3</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-slide-y-transition>
+
+          <v-slide-y-transition>
+            <v-list-item-group v-if="openSubMenus.includes('subMenu1')">
+              <!-- <v-list-item prepend-icon="mdi mdi-basket-plus" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/Crear_producto">
+                <v-list-item-content>
+                  <v-list-item-title>Crear producto</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>-->
+              <v-list-item prepend-icon="mdi mdi-truck-outline" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/furgon4">
+                <v-list-item-content>
+                  <v-list-item-title>Furgón 4</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-slide-y-transition>
+
+          <v-slide-y-transition>
+            <v-list-item-group v-if="openSubMenus.includes('subMenu1')">
+              <!-- <v-list-item prepend-icon="mdi mdi-basket-plus" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/Crear_producto">
+                <v-list-item-content>
+                  <v-list-item-title>Crear producto</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>-->
+              <v-list-item prepend-icon="mdi mdi-truck-outline" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/furgon5">
+                <v-list-item-content>
+                  <v-list-item-title>Furgón 5</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-slide-y-transition>
+
+          <v-slide-y-transition>
+            <v-list-item-group v-if="openSubMenus.includes('subMenu1')">
+              <!-- <v-list-item prepend-icon="mdi mdi-basket-plus" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/Crear_producto">
+                <v-list-item-content>
+                  <v-list-item-title>Crear producto</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>-->
+              <v-list-item prepend-icon="mdi mdi-truck-outline" style="margin-top: 0px; margin-left: 20px; font-size: 14px;" to="/furgon6">
+                <v-list-item-content>
+                  <v-list-item-title>Furgón 6</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-slide-y-transition>   
+        </v-list-item-group>
+        <!-- FINALIZA SUB MENU-->
+
+        <v-list-item
+          prepend-icon="mdi mdi-office-buildingf"
+          title="Proveedores"
+          value="Prov"
+          router-link to="/"
+          style="margin-bottom: 10px"
+        ></v-list-item>
+
+
+        <v-list-item
+          prepend-icon="mdi mdi-account-tie"
+          title="Administrador"
+          value="Admin"
+          router-link to="/"
+          style="margin-bottom: 10px"
+        ></v-list-item>
+        <v-list-item
+          prepend-icon="mdi mdi-logout"
+          title="Cerrar Sesión"
+          value="Cerrar_sesion"
+          router-link to="/"
+          style="margin-top: 100px;"
+        ></v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main>
+      <router-view></router-view>
+      <HelloWorld/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-/* import HelloWorld from './components/HelloWorld.vue' */
-/* import Compras_Com from './components/Compras_Com.vue';
-import Ventas_Com from './components/Ventas_Com.vue'; */
-import LoginP from './components/LoginP.vue';
-import MenuP from './components/MenuP.vue';
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-
   components: {
-    LoginP,
-    MenuP
-   /*  HelloWorld, */
-   /*  Compras_Com,
-    Ventas_Com */ 
+    HelloWorld,
   },
 
-  data () {
-  return {
-    drawer: true,
-    rail: true,
-  }
-},
-}
+  data() {
+    return {
+      drawer: true,
+      rail: true,
+      openSubMenus: [], // Almacena los submenús abiertos
+    };
+  },
+  methods: {
+    toggleSubMenu(subMenu) {
+      if (this.openSubMenus.includes(subMenu)) {
+        // Si el submenú ya está abierto, ciérralo
+        const index = this.openSubMenus.indexOf(subMenu);
+        this.openSubMenus.splice(index, 1);
+      } else {
+        // Si el submenú está cerrado, ábrelo
+        this.openSubMenus.push(subMenu);
+      }
+    },
+  },
+};
 </script>
