@@ -119,37 +119,6 @@
       </v-container>
     </v-card>
   
-  
-    <v-container class="text-center">
-     
-  
-      <v-row justify="center">
-        <v-col cols="12" sm="6" md="4">
-          <v-btn block rounded="0" size="x-large" to="">NHR</v-btn>
-        </v-col>
-  
-        <v-col cols="12" sm="6" md="4">
-          <v-btn block rounded="xs" size="x-large" to="/src/components/Furgones/furgon_2.vue">NPR</v-btn>
-        </v-col>
-  
-        <v-col cols="12" sm="6" md="4">
-          <v-btn block rounded="sm" size="x-large" to="/src/components/Furgones/furgon_3.vue">NQR</v-btn>
-        </v-col>
-  
-        <v-col cols="12" sm="6" md="4">
-          <v-btn block size="x-large" to="/src/components/Furgones/furgon_4.vue">NRR</v-btn>
-        </v-col>
-  
-        <v-col cols="12" sm="6" md="4">
-          <v-btn block rounded="lg" size="x-large" to="/src/components/Furgones/furgon_5.vue">NLR</v-btn>
-        </v-col>
-
-        <v-col cols="12" sm="6" md="4">
-          <v-btn block rounded="lg" size="x-large" to="/src/components/Furgones/furgon_6.vue">NKR</v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-
     <v-footer class="bg-grey-lighten-1">
     <v-row justify="center" no-gutters >
       <v-btn

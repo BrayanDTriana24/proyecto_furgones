@@ -4,8 +4,7 @@ import Ventas from '../components/Ventas_Com.vue'
 import Menu from '../components/MenuP.vue'
 import LoginP from '../components/LoginP.vue'
 import FurgonesP from '../components/furgones_Com.vue'
-import Furgon1P from '../components/furgon_1.vue'
-
+import ProveedoresCom from '../components/Proveedores_Com.vue'
 
 const routes =[
     {
@@ -34,9 +33,9 @@ const routes =[
         component: FurgonesP
     },
     {
-        path: "/Furgon1",
-        name: "FurgonP",
-        component: Furgon1P
+        path: "/prov",
+        name: "Proveedores_Com",
+        component: ProveedoresCom
     },
 ]
 

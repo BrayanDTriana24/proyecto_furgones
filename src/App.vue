@@ -41,7 +41,7 @@
           prepend-icon="m mdi-office-buildingf"
           title="Proveedores"
           value="Prov"
-          router-link to="/"
+          router-link to="/prov"
           style="margin-bottom: 10px"
         ></v-list-item>
 
