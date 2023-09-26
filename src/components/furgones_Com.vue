@@ -16,19 +16,6 @@
           <v-icon></v-icon>
         </v-btn>
       </v-toolbar>
-    </div>
-    
-      <v-container>
-        <v-row justify="space-around">
-          <v-col
-            v-for="elevation in elevations"
-            :key="elevation"
-            cols="12"
-            md="4"
-          >
-            <v-sheet
-              class="pa-12"
-              color="grey-lighten-3"
             >
               <v-sheet
                 :elevation="elevation"
