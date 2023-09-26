@@ -16,7 +16,7 @@
             label="Padding"
           >
             <template v-slot:prepend>
-              <strong class="text-primary py-1">p</strong>
+              <strong class="text-primary py-1">Furgón</strong>
             </template>
   
             <template v-slot:append-outer>
@@ -45,7 +45,7 @@
             label="Margin"
           >
             <template v-slot:prepend>
-              <strong class="text-primary py-1">m</strong>
+              <strong class="text-primary py-1">Lista de Materiales</strong>
             </template>
   
             <template v-slot:append-outer>

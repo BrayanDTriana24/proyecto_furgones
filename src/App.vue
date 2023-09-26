@@ -13,15 +13,6 @@
         <!--MENU-->
 
         <v-list-item
-          prepend-icon="mdi mdi-login"
-          title="Iniciar Sesión"
-          value="Login"
-          router-link to="/LoginP"
-          style="margin-top: 20px;"
-        ></v-list-item>
-
-
-        <v-list-item
           prepend-icon="mdi mdi-home-account"
           title="Inicio"
           value="Home"
@@ -135,7 +126,7 @@
         <!-- FINALIZA SUB MENU-->
 
         <v-list-item
-          prepend-icon="mdi mdi-office-buildingf"
+          prepend-icon="m mdi-office-buildingf"
           title="Proveedores"
           value="Prov"
           router-link to="/"
@@ -150,13 +141,7 @@
           router-link to="/"
           style="margin-bottom: 10px"
         ></v-list-item>
-        <v-list-item
-          prepend-icon="mdi mdi-logout"
-          title="Cerrar Sesión"
-          value="Cerrar_sesion"
-          router-link to="/"
-          style="margin-top: 100px;"
-        ></v-list-item>
+
       </v-list>
     </v-navigation-drawer>
     <v-main>
@@ -167,12 +152,12 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    
   },
 
   data() {

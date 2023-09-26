@@ -1,88 +1,183 @@
 <template>
-  <div>
-    <v-toolbar
-      dark
-      prominent
-      image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-    >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+  <v-toolbar  v-img src="../assets/furgones.jpg">
+      <template v-slot:prepend>
+        <v-btn icon="mdi mdi-shield-home"></v-btn>
+      </template>
+  
+      <v-list-item
+          prepend-icon="mdi mdi-login"
+          title="Iniciar Sesión"
+          value="Login"
+          router-link to="/LoginP"
+          style="margin-top: 5px;"
+        ></v-list-item>
 
-      <v-toolbar-title></v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn>
-        <v-icon></v-icon>
-      </v-btn>
+        <v-list-item
+          prepend-icon="mdi mdi-logout"
+          title="Cerrar Sesión"
+          value="Cerrar_sesion"
+          router-link to="/"
+          style="margin-top: 5px;"
+        ></v-list-item>
+  
+      <template v-if="$vuetify.display.smAndUp">
+        <v-divider
+          class="mx-3 align-self-center"
+          length="24"
+          thickness="2"
+          color="blue-accent-4"
+          vertical
+        ></v-divider>
+  
+      </template>
     </v-toolbar>
-  </div>
-  <v-row>
-    <template v-for="(image,imgIdx) in imageLayout" :key="imgIdx">
-      <v-col :cols="image.cols">
-        <v-img
-          :src="`https://picsum.photos/500/300?image=${image.cols * 20}`"
-          cover
-          height="90%"
-        ></v-img>
-      </v-col>
+  
+    <v-snackbar
+        :timeout="2000"
+      >
+        <template v-slot:activator="{ props }">
+          <v-btn class="ma-2" v-bind="props">FURGOSANDER S.A.S.</v-btn>
+        </template>
+  
+        Lorem ipsum dolor sit amet consectetur.
+      </v-snackbar>
+  
+      <v-snackbar
+        :timeout="2000"
+        color="blue-grey"
+        rounded="pill"
+      >
+        <template >
+          <!-- <v-btn rounded="pill" color="blue-grey" class="ma-2" v-bind="props">open</v-btn> -->
+        </template>
+  
+        Snackbar with <strong>rounded="pill"</strong>.
+      </v-snackbar>
+  
+      <v-card
+      class="mx-auto"
+      width="1600"
+      top="100"
 
-      <v-col v-if="image.children" cols="6" class="d-flex flex-column">
-        <v-row>
-          <v-col v-for="(children,childIdx) in image.children" :key="childIdx" :cols="children.cols">
-            <v-img
-              :src="`https://picsum.photos/500/300?image=${children.cols + childIdx}`"
-              cover
-              height="90%"
-            ></v-img>
+    >
+      <!-- <v-system-bar
+        color="indigo darken-2"
+        dark
+      >
+        <v-spacer></v-spacer>
+  
+        <v-icon icon="mdi-window-minimize"></v-icon>
+  
+        <v-icon icon="mdi-window-maximize"></v-icon>
+  
+        <v-icon icon="mdi-close"></v-icon>
+      </v-system-bar>
+  
+      <v-toolbar
+        color="indigo"
+        dark
+      >
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+  
+        <v-toolbar-title>Discover</v-toolbar-title>
+  
+        <v-spacer></v-spacer>
+  
+        <v-btn icon="mdi-magnify"></v-btn>
+      </v-toolbar> -->
+  
+      <v-container fluid>
+        <v-row dense>
+          <v-col
+            v-for="card in cards"
+            :key="card.title"
+            :cols="card.flex"
+          >
+            <v-card>
+              <v-img
+                :src="card.src"
+                class="align-end"
+                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                height="200px"
+                cover
+              >
+                <v-card-title class="text-white" v-text="card.title"></v-card-title>
+              </v-img>
+  
+              <v-card-actions>
+                <v-spacer></v-spacer>
+  
+                <!-- <v-btn size="small" color="surface-variant" variant="text" icon="mdi-heart"></v-btn> -->
+  
+                <!-- <v-btn size="small" color="surface-variant" variant="text" icon="mdi-bookmark"></v-btn> -->
+  
+                <!-- <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn> -->
+              </v-card-actions>
+            </v-card>
           </v-col>
         </v-row>
-      </v-col>
-    </template>
-  </v-row>
+      </v-container>
+    </v-card>
+  
+  
+    <v-container class="text-center">
+     
+  
+      <v-row justify="center">
+        <v-col cols="12" sm="6" md="4">
+          <v-btn block rounded="0" size="x-large" to="">NHR</v-btn>
+        </v-col>
+  
+        <v-col cols="12" sm="6" md="4">
+          <v-btn block rounded="xs" size="x-large" to="/src/components/Furgones/furgon_2.vue">NPR</v-btn>
+        </v-col>
+  
+        <v-col cols="12" sm="6" md="4">
+          <v-btn block rounded="sm" size="x-large" to="/src/components/Furgones/furgon_3.vue">NQR</v-btn>
+        </v-col>
+  
+        <v-col cols="12" sm="6" md="4">
+          <v-btn block size="x-large" to="/src/components/Furgones/furgon_4.vue">NRR</v-btn>
+        </v-col>
+  
+        <v-col cols="12" sm="6" md="4">
+          <v-btn block rounded="lg" size="x-large" to="/src/components/Furgones/furgon_5.vue">NLR</v-btn>
+        </v-col>
 
-  <v-footer class="bg-grey-lighten-1">
-    <v-row justify="center" no-gutters>
+        <v-col cols="12" sm="6" md="4">
+          <v-btn block rounded="lg" size="x-large" to="/src/components/Furgones/furgon_6.vue">NKR</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-footer class="bg-grey-lighten-1">
+    <v-row justify="center" no-gutters >
       <v-btn
         v-for="link in links"
         :key="link"
-        color="black"
+        color="white"
         variant="text"
         class="mx-2"
         rounded="xl"
+        height="1"
       >
         {{ link }}
       </v-btn>
       <v-col class="text-center mt-4" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Furgosander SAS</strong>
+        {{ new Date().getFullYear() }} — <strong>FURGOSANDER S. A. S</strong>
       </v-col>
     </v-row>
   </v-footer>
-</template>
 
-<script setup>
-  const imageLayout = [
-    { cols: 4 },
-    {
-      cols: 8,
-      children: [{ cols: 12 }, { cols: 12 }],
-    },
-    { cols: 6 },
-    { cols: 3 },
-    { cols: 9 },
-    { cols: 4 },
-    { cols: 8 },
-  ]
-</script>
-
-<script>
-export default {
-    data: () => ({
-      links: [
-        'Inicio',
-        'Furgones',
-        'Proveedores',
-        'Administrador',
-        'Contacto',
-      ],
-    }),
-  }</script>
+  </template>
+  
+  <script>
+    export default {
+      data: () => ({
+        cards: [
+          { title: 'Nuestros furgones', src: 'https://transfrioh5.com/wp-content/uploads/2022/09/SLIDER1.jpg', flex: 12 },
+          
+        ],
+      }),
+    }
+  </script>
