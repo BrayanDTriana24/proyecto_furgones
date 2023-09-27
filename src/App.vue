@@ -19,6 +19,7 @@
           router-link to="../"
           style="margin-top: 20px;"
         ></v-list-item>
+
        
         <!--SUB MENU-->
         <v-list-item-group>
@@ -38,27 +39,20 @@
         <!-- FINALIZA SUB MENU-->
 
         <v-list-item
-          prepend-icon="m mdi-office-buildingf"
+          prepend-icon="mdi-cash"
           title="Proveedores"
           value="Prov"
           router-link to="/prov"
-          style="margin-bottom: 10px"
+          style="margin-bottom: 1px"
         ></v-list-item>
 
 
-        <v-list-item
-          prepend-icon="mdi mdi-account-tie"
-          title="Administrador"
-          value="Admin"
-          router-link to="/"
-          style="margin-bottom: 10px"
-        ></v-list-item>
+       
 
       </v-list>
     </v-navigation-drawer>
     <v-main>
       <router-view></router-view>
-      <HelloWorld/>
     </v-main>
   </v-app>
 </template>
