@@ -1,14 +1,17 @@
 <template>
+
   <div>
+    <div class="login">
     <h1>FURGOSANDER</h1>
-    <v-img src="../assets/Furgosander.png" width="300px"></v-img>>
-    <h3>Administrador</h3>
+    <v-img src="../assets/Furgosander.png" style="width:80%; margin-left: 10%;" ></v-img><br>
+    
     <form @submit.prevent="onSubmit">
-      <input type="text" v-model="username" placeholder="Usuario">
+      <input type="text" v-model="username" placeholder="Usuario"><br>
       <input type="password" v-model="password" placeholder="Contraseña">
       <button type="submit">Iniciar Sesión</button>
     </form>
     <p v-if="error">Error al iniciar sesión</p>
+  </div>
   </div>
 </template>
 
@@ -42,15 +45,7 @@ export default {
 </script>
 
 <style>
-.login {
-  width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f60a0a;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(27, 61, 235, 0.1);
-  font-family: 'Times New Roman', Times, serif;
-}
+
 
 h1 {
   text-align: center;
@@ -67,11 +62,11 @@ h3 {
 }
 
 input {
-  width: 50%;
+  width: 100%;
   padding: 10px;
-  border: 2px solid #0b0b0b;
+  border: 1px solid #0b0b0b;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 button {
@@ -86,10 +81,21 @@ button {
 }
 
 .error {
-  color: red;
+  color: rgb(255, 0, 0);
   font-size: 16px;
   font-weight: bold;
   margin-top: 10px;
+}
+.login{
+  width: 50%;
+    margin: auto;
+    padding: 5%;
+    top: 10%;
+    border-radius: 8%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(27, 61, 235, 0.1);
+    font-family: 'Times New Roman', Times, serif;
+
 }
 
 </style>
