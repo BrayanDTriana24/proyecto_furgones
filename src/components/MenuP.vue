@@ -36,7 +36,7 @@
       </template>
     </v-toolbar>
   
-    <v-carousel show-arrows="hover">
+    <v-carousel cycle :interval="3000" show-arrows="hover" height="830">
       <v-carousel-item
     src="../assets/Furgones1.jpg"
     cover

@@ -1,18 +1,42 @@
 <template>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet">
+<v-card 
+class="mx-auto pa-12 pb-8"
+elevation="9"
+max-width="448"
+rounded="lg"
+>
   <div>
     <div class="login">
-    <h1>FURGOSANDER</h1>
-    <v-img src="../assets/Furgosander.png" style="width:80%; margin-left: 10%;" ></v-img><br>
-    
+    <h1 class="logo" style="font-family: 'Teko', sans-serif;">FURGOSANDER S.A.S</h1>
     <form @submit.prevent="onSubmit">
-      <input type="text" v-model="username" placeholder="Usuario"><br>
-      <input type="password" v-model="password" placeholder="Contraseña">
+      Usuario
+      <v-text-field
+      v-model="username"
+        density="compact"
+        placeholder="Ingrese usuario"
+        prepend-inner-icon="mdi-account-outline"
+        variant="outlined"
+      ></v-text-field>
+      
+      Contraseña
+      <v-text-field
+      v-model="password"
+      type="password"
+        density="compact"
+        placeholder="Ingrese contraseña"
+        prepend-inner-icon="mdi-lock-outline"
+        variant="outlined"
+      ></v-text-field>
+
       <button type="submit">Iniciar Sesión</button>
     </form>
     <p v-if="error">Error al iniciar sesión</p>
   </div>
   </div>
+</v-card>
 </template>
 
 <script>
@@ -28,15 +52,11 @@ export default {
   methods: {
     onSubmit() {
       this.error = false;
-      // Conectar con la base de datos
-      // ...
-      // Comprobar las credenciales
+
       if (this.username === 'admin' && this.password === '123456') {
-        // Iniciar sesión
-        // ...
+
         this.$router.push('/')
       } else {
-        // Error al iniciar sesión
         this.error = true;
       }
     },
@@ -52,6 +72,9 @@ h1 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+.logo{
+  font-size: 55px;
 }
 
 h3 {
@@ -72,12 +95,14 @@ input {
 button {
   width: 100%;
   background-color: #0858d8;
-  color: #fff;
+  border-radius: 10px;
+  color: white;
   padding: 10px;
   border: none;
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
+  
 }
 
 .error {
@@ -85,17 +110,6 @@ button {
   font-size: 16px;
   font-weight: bold;
   margin-top: 10px;
-}
-.login{
-  width: 50%;
-    margin: auto;
-    padding: 5%;
-    top: 10%;
-    border-radius: 8%;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(27, 61, 235, 0.1);
-    font-family: 'Times New Roman', Times, serif;
-
 }
 
 </style>

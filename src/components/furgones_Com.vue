@@ -50,10 +50,10 @@
   
   <v-row justify="center">
     <v-col cols="12" sm="6" md="4">
-      <v-btn block rounded="0" size="x-large">NHR
+      <v-btn block rounded="0" size="x-large"> NHR</v-btn>
         
-        
-        <v-slote>
+        <ul>    
+      
         <v-card
     :loading="loading"
     class="mx-auto my-12"
@@ -405,11 +405,11 @@
     </v-card-actions>
   
   </v-card>
-</v-slote>
-      </v-btn>
+</ul>
+      
     </v-col>
 
-    <v-col cols="12" sm="6" md="4">
+    <!-- <v-col cols="12" sm="6" md="4">
       <v-btn block rounded="xs" size="x-large">NPR
         <v-slote>
         <v-card
@@ -2197,11 +2197,11 @@
   </v-card>
 </v-slote>
       </v-btn>
-    </v-col>
+    </v-col>-->
   </v-row>
 </v-container>
 </div>
-</template>
+</template> 
   
 
 <script>
@@ -2219,5 +2219,5 @@ export default {
       setTimeout(() => (this.loading = false), 2000)
     },
   },
-}
+} 
 </script>
