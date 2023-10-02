@@ -4,7 +4,7 @@ import Ventas from '../components/Ventas_Com.vue'
 import Menu from '../components/MenuP.vue'
 import LoginP from '../components/LoginP.vue'
 import FurgonesP from '../components/furgones_Com.vue'
-import Proveedores from '../components/proveedores_Com.vue'
+import Proveedores from '../components/Proveedores_Com.vue'
 
 
 const routes =[
