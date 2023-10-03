@@ -32,14 +32,14 @@
                 Añadir Proveedor
               </v-btn>
 
-              <v-btn
+              <!-- <v-btn
                 color="primary"
                 dark
                 class="mb-2"
                 v-bind="props"
               >
               Imprimir
-              </v-btn>
+              </v-btn> -->
             </template>
             <v-card>
               <v-card-title>
@@ -195,7 +195,7 @@
           { title: 'Telefono', key: 'telefono' },
           { title: 'Direccion', key: 'direccion' },
           { title: 'Material', key: 'material' },
-          { title: 'Actions', key: 'actions', sortable: false },
+          { title: 'Opciones', key: 'actions', sortable: false },
         ],
         desserts: [],
         editedIndex: -1,

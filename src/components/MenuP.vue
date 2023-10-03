@@ -2,7 +2,7 @@
   <v-toolbar  
       dark
       prominent
-      image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+      color="blue"
   v-img src="../assets/furgones.jpg">
       <template v-slot:prepend>
         <v-btn icon="mdi mdi-shield-home"></v-btn>
