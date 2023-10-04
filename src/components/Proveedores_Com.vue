@@ -1,5 +1,34 @@
 <template> 
+<v-toolbar  
+      dark
+      prominent
+      color="#2962FF"
+  v-img src="../assets/furgones.jpg">
+      <template v-slot:prepend>
+        <h3> Proveedores</h3>
+      </template>
+  
+      
 
+        <v-list-item
+          prepend-icon="mdi mdi-logout"
+          title="Cerrar Sesión"
+          value="Cerrar_sesion"
+          router-link to="/"
+          style="margin-top: 5px;"
+        ></v-list-item>
+  
+      <template v-if="$vuetify.display.smAndUp">
+        <v-divider
+          class="mx-3 align-self-center"
+          length="24"
+          thickness="2"
+          color="blue-accent-4"
+          vertical
+        ></v-divider>
+  
+      </template>
+    </v-toolbar>
   <v-container>
     <v-data-table
       :headers="headers"

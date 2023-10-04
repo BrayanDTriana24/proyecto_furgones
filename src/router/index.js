@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Menu from '../components/MenuP.vue'
+import Inicio from '../components/InicioP.vue'
 import LoginP from '../components/LoginP.vue'
 import FurgonesP from '../components/furgones_Com.vue'
 import Proveedores from '../components/Proveedores_Com.vue'
@@ -9,8 +9,8 @@ const routes =[
 
     {
         path: "/",
-        name: "Menu",
-        component: Menu
+        name: "Inicio",
+        component: Inicio
     },
     {
         path: "/LoginP",

@@ -12,7 +12,7 @@
         <v-divider></v-divider>
         <!--MENU-->
 
-        <v-list-item
+        <v-list-item @click.stop="rail = !rail"
           prepend-icon="mdi mdi-home-account"
           title="Inicio"
           value="Home"
@@ -23,8 +23,8 @@
        
         <!--SUB MENU-->
         <v-list-item-group>
-          <v-list-item  
-          @click="toggleSubMenu('subMenu1')"
+          <v-list-item   @click.stop="rail = !rail"
+          
           prepend-icon="mmdi mdi-truck"
           value="Furgones"
           router-link to="/furgones"
@@ -38,8 +38,8 @@
         </v-list-item-group>
         <!-- FINALIZA SUB MENU-->
 
-        <v-list-item
-          prepend-icon="mdi-cash"
+        <v-list-item @click.stop="rail = !rail"
+          prepend-icon="mdi mdi-handshake"
           title="Proveedores"
           value="Prov"
           router-link to="/prov"
@@ -74,16 +74,7 @@ export default {
     };
   },
   methods: {
-    toggleSubMenu(subMenu) {
-      if (this.openSubMenus.includes(subMenu)) {
-        // Si el submenú ya está abierto, ciérralo
-        const index = this.openSubMenus.indexOf(subMenu);
-        this.openSubMenus.splice(index, 1);
-      } else {
-        // Si el submenú está cerrado, ábrelo
-        this.openSubMenus.push(subMenu);
-      }
-    },
+    
   },
 };
 </script>

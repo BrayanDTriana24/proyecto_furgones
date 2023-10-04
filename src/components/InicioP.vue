@@ -2,10 +2,10 @@
   <v-toolbar  
       dark
       prominent
-      color="blue"
+      color="#2962FF"
   v-img src="../assets/furgones.jpg">
       <template v-slot:prepend>
-        <v-btn icon="mdi mdi-shield-home"></v-btn>
+        <h3>Inicio</h3>
       </template>
   
       <v-list-item

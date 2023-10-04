@@ -1,49 +1,55 @@
 <template>
  <div>
-    <v-toolbar
+  <v-toolbar  
       dark
       prominent
-      image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-    >
-      
-
-      <v-toolbar-title>FURGONES</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-export</v-icon>
-      </v-btn>
+      color="#2962FF"
+      >
+      <template v-slot:prepend>
+        <h3>Furgones</h3>
+      </template>
+  
+        <v-list-item
+          prepend-icon="mdi mdi-logout"
+          title="Cerrar Sesión"
+          value="Cerrar_sesion"
+          router-link to="/"
+          style="margin-top: 5px;"
+        ></v-list-item>
+  
+      <template v-if="$vuetify.display.smAndUp">
+        <v-divider
+          class="mx-3 align-self-center"
+          length="24"
+          thickness="2"
+          color="blue-accent-4"
+          vertical
+        ></v-divider>
+  
+      </template>
     </v-toolbar>
   </div>
-  <div>
+  <div
+  style="max-width:70%; margin-top: 5%; border: 3px rgba(201, 199, 199, 0.858) solid;" rounded="lg" elevation="" class="mx-auto">
       
             
-              <v-sheet
-                :elevation="elevation"
-                class="mx-auto"
-                height="100%"
-                width="100%"
-  
-  
-      border="lg opacity-12"
-      max-width="1550"
-    > <v-img src="../assets/furgones.jpg"></v-img>
+              
+   <v-img src="../assets/furgones.jpg"></v-img>
       
-              </v-sheet>
+              
             </div>
             <div>
-<v-container class="text-center">
+<v-container class="text-center" style="width: 68%;">
      
   
   <v-row justify="center">
-    <v-col cols="12" sm="6" md="4">
+    <v-col >
 
       <v-card>
     <v-tabs
       v-model="tab"
       bg-color="primary"
-      max-width="1550"
+      max-width="100%"
     >
       <v-tab value="one">Item One</v-tab>
       <v-tab value="two">Item Two</v-tab>
@@ -58,9 +64,9 @@
       <v-card
   :loading="loading"
   class="mx-auto my-12"
-  max-width="374"
+  max-width="80%"
 >
-  <template v-slot:loader="{ isActive }">
+  <template v-t:losloader="{ isActive }">
     <v-progress-linear
       :active="isActive"
       color="deep-purple"
@@ -70,8 +76,9 @@
   </template>
 
   <v-img
-    cover
-    height="250"
+
+  style="padding: 10%;"
+    height="20%"
     src="../assets/NHR.png"
   ></v-img>
 
@@ -154,7 +161,9 @@
   </v-container>
 </v-card>
       </v-chip>
-
+    </v-chip-group>
+    
+    <!-- <v-chip-group>
       <v-chip>Material 2
         <v-card>
   <v-container fluid>
@@ -392,7 +401,7 @@
   </v-container>
 </v-card>
       </v-chip>
-    </v-chip-group>
+    </v-chip-group> -->
   </div>
 
   <v-card-actions>
