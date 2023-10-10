@@ -74,8 +74,11 @@
         </v-tabs>
         <v-window v-model="tab">
           <v-window-item value="option-1">
-            <v-card flat>
             
+            <v-card flat>
+              <div class="content-container">
+              
+            <div class="table-container">
   <v-data-table-virtual
     :headers="headers"
     :items="virtualDesserts"
@@ -83,7 +86,11 @@
     height="650"
     item-value="name"
   ></v-data-table-virtual>
-
+  </div>
+  <div class="image-container">
+     <v-img src="../assets/NHR.png"></v-img>
+  </div>
+</div>
               
             </v-card>
           </v-window-item>
@@ -241,3 +248,20 @@
     },
   }
   </script>
+  <style scoped>
+  .content-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+  }
+  
+  .image-container {
+    flex: 1; /* Ocupa el espacio disponible */
+    margin-right: 20px; /* Ajusta el espacio entre la imagen y la tabla */
+    width: 80vh;
+  }
+  
+  .table-container {
+    /* flex: 1; */ /* Ocupa el doble de espacio que la imagen */
+    width: 100vh;
+  }
+  </style>
