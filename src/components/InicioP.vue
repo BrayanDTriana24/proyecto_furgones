@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar  
+  <v-toolbar
       dark
       prominent
       color="#2962FF"

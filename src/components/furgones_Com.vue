@@ -92,6 +92,7 @@
      <h4>Adicional</h4><input type="number" style="border: solid black 2px; border-radius: 5px; "><br>
      <h4>Mano de obra</h4><input type="number" style="border: solid black 2px; border-radius: 5px;"><br>
      <br><h2>Precio Total</h2>
+     <input type="text" name="" id="">
 
   </div>
 </div>
