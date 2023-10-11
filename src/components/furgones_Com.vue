@@ -88,7 +88,11 @@
   ></v-data-table-virtual>
   </div>
   <div class="image-container">
-     <v-img src="../assets/NHR.png"></v-img>
+     <v-img src="../assets/NHR.png" style="padding: 2px 10px 2px 10px;"></v-img>
+     <h4>Adicional</h4><input type="number" style="border: solid black 2px; border-radius: 5px; "><br>
+     <h4>Mano de obra</h4><input type="number" style="border: solid black 2px; border-radius: 5px;"><br>
+     <br><h2>Precio Total</h2>
+
   </div>
 </div>
               
@@ -163,7 +167,7 @@
           iron: '1',
         },
         {
-          name: 'Ice cream sandwich',
+          name: 'Recina',
           calories: 237,
           fat: 9.0,
           carbs: 37,
@@ -238,7 +242,7 @@
     }),
     computed: {
       virtualDesserts () {
-        return [...Array(100).keys()].map(i => {
+        return [...Array("").keys()].map(i => {
           const dessert = { ...this.desserts[i % 10] }
           dessert.name = `${dessert.name} #${i}`
 
@@ -253,15 +257,17 @@
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
   }
-  
+
   .image-container {
     flex: 1; /* Ocupa el espacio disponible */
-    margin-right: 20px; /* Ajusta el espacio entre la imagen y la tabla */
-    width: 80vh;
+    /* margin-right: 20px; */ /* Ajusta el espacio entre la imagen y la tabla */
+    width: 50vh;
+    text-align: center;
   }
   
   .table-container {
     /* flex: 1; */ /* Ocupa el doble de espacio que la imagen */
-    width: 100vh;
+    width: 80vh;
+    border: solid rgb(23, 122, 235) 2px;
   }
   </style>
