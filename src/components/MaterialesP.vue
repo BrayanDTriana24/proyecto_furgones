@@ -40,7 +40,7 @@
             <v-toolbar
               flat
             >
-              <v-toolbar-title>Lista de Proveedores</v-toolbar-title>
+              <v-toolbar-title>Lista de Materiales</v-toolbar-title>
               <v-divider
                 class="mx-4"
                 inset
@@ -58,7 +58,7 @@
                     class="mb-2"
                     v-bind="props"
                   >
-                    Añadir Proveedor
+                    Añadir Material
                   </v-btn>
     
                   <!-- <v-btn
@@ -105,8 +105,8 @@
                           md="4"
                         >
                           <v-text-field
-                            v-model="editedItem.telefono"
-                            label="Telefono"
+                            v-model="editedItem.cantidad"
+                            label="Cantidad"
                           ></v-text-field>
                         </v-col>
     
@@ -116,12 +116,12 @@
                           md="4"
                         >
                           <v-text-field
-                            v-model="editedItem.direccion"
-                            label="Direccion"
+                            v-model="editedItem.precio"
+                            label="Precio"
                           ></v-text-field>
                         </v-col>
     
-                        <v-col
+                        <!-- <v-col
                           cols="12"
                           sm="6"
                           md="4"
@@ -130,7 +130,7 @@
                             v-model="editedItem.material"
                             label="Material"
                           ></v-text-field>
-                        </v-col>
+                        </v-col> -->
     
                           
                       </v-row>
@@ -201,7 +201,7 @@
       <script>
       
       import db from '../firebase/init.js'
-      import {collection, getDocs, query, addDoc,updateDoc,doc, deleteDoc} from  'firebase/firestore'
+      import {collection, getDocs, query, addDoc, updateDoc, doc, deleteDoc} from  'firebase/firestore'
       /* import jspdf from 'jspdf' */
       /* require (jspdf.autotable) */
     
@@ -210,6 +210,7 @@
            /* this.createUsuario();  */
       /*     }, */
         data: () => ({
+          
             dialog: false,
             dialogDelete: false,
             headers: [
@@ -220,7 +221,7 @@
                 key: 'name',
               },
               { title: 'Id', key: 'id' },
-              { title: 'Materiales', key: 'materiales' },
+              { title: 'Nombre', key: 'nombre' },
               { title: 'Cantidad', key: 'cantidad' },
               { title: 'Precio', key: 'precio' },
               { title: 'Opciones', key: 'actions', sortable: false },
@@ -230,14 +231,14 @@
             editedItem: {
               keyid: 0,
               id: 0,
-              materiales: 0,
+              nombre: 0,
               cantidad: 0,
               precio: 0,
               
             },
             defaultItem: {
               id: 0,
-              materiales: 0,
+              nombre: 0,
               cantidad: 0,
               precio: 0,
             },
@@ -245,7 +246,7 @@
       
           computed: {
             formTitle () {
-              return this.editedIndex === -1 ? 'Nuevo Usuario' : 'Actualizar Usuario'
+              return this.editedIndex === -1 ? 'Nuevo Material' : 'Actualizar Material'
             },
           },
       
@@ -269,12 +270,12 @@
               const colRef = collection(db, 'Materiales')
               const dataObj = {
                   id: this.editedItem.id,
-                  materiales: this.editedItem.materiales,
+                  nombre: this.editedItem.nombre,
                   cantidad: this.editedItem.cantidad,
                   precio: this.editedItem.precio,
               }
               const docRef = await addDoc(colRef, dataObj);
-              console.log("Creo el proveedor ", docRef.id)
+              console.log("Creo el material ", docRef.id)
           },
       
             async listarUsuarios(){
@@ -285,7 +286,7 @@
                 this.desserts.push({
                   keyid:doc.id,
                   id:doc.data().id,
-                  materiales:doc.data().materiales,
+                  nombre:doc.data().nombre,
                   cantidad:doc.data().cantidad,
                   precio:doc.data().precio,
                   })
@@ -295,13 +296,12 @@
             async ActualizarUsuarios(){
              
               console.log(this.editedItem.keyid)
-              const Ref = (doc(db, "proveedores",this.editedItem.keyid));
+              const Ref = (doc(db, "Materiales",this.editedItem.keyid));
               await updateDoc (Ref,{
                 nombre: this.editedItem.nombre,
-                  telefono: this.editedItem.telefono,
-                  direccion: this.editedItem.direccion,
-                  material: this.editedItem.material
-              }).then(console.log("Termino update Usuarios"))
+                  cantidad: this.editedItem.cantidad,
+                  precio: this.editedItem.precio,
+              }).then(console.log("Termino update Material"))
               .catch(function(error){
                 console.log(error)
               });
@@ -309,13 +309,12 @@
             
             async EliminarUsuarios(){
               console.log(this.editedItem.keyid)
-              const Ref = (doc(db, "proveedores",this.editedItem.keyid));
+              const Ref = (doc(db, "Materiales",this.editedItem.keyid));
               await deleteDoc (Ref,{
                   nombre: this.editedItem.nombre,
-                  telefono: this.editedItem.telefono,
-                  direccion: this.editedItem.direccion,
-                  material: this.editedItem.material
-              }).then(console.log("eliminar Usuarios"))
+                  cantidad: this.editedItem.cantidad,
+                  precio: this.editedItem.precio,
+              }).then(console.log("eliminar Material"))
               .catch(function(error){
                 console.log(error)
               });

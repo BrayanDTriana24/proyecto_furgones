@@ -46,6 +46,14 @@
           style="margin-bottom: 1px"
         ></v-list-item>
 
+        <v-list-item @click.stop="rail = !rail"
+          prepend-icon="mdi mdi-null"
+          title="Materiales"
+          value="Material"
+          router-link to="/material"
+          style="margin-bottom: 1px"
+        ></v-list-item>
+
 
        
 

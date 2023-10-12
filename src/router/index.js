@@ -3,6 +3,7 @@ import Inicio from '../components/InicioP.vue'
 import LoginP from '../components/LoginP.vue'
 import FurgonesP from '../components/furgones_Com.vue'
 import Proveedores from '../components/Proveedores_Com.vue'
+import Material from '../components/MaterialesP.vue'
 
 
 const routes =[
@@ -26,6 +27,11 @@ const routes =[
         path: "/prov",
         name: "Proveedores",
         component: Proveedores
+    },
+    {
+        path: "/material",
+        name: "Materiales",
+        component: Material
     },
 ]
 
