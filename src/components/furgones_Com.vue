@@ -40,14 +40,71 @@
               </div>
               
     <div class="cont" style=" padding: 2% 8% 8% 8%;">
-      <div>
+      <v-card>
+        <v-toolbar
+        color="blue"
+        title="Furgones"
+      ></v-toolbar>
+      <v-tabs 
+      v-model="tab">
+        <div v-for="(items,index) in desserts" :key="index">
+          <v-tab
+          :value="items.Furgon"
+          color="blue">
+            {{ items.Furgon }}
+          </v-tab>
+        </div>
+      </v-tabs>
+      <v-window v-for="(items,index) in desserts" :key="index" v-model="tab">
+          <v-window-item :value="items.Furgon">
+            
+            <v-card flat>
+              <div class="content-container">
+              
+  <div class="table-container">
+                <v-table >
+                  <thead>
+                    <tr>
+                      <td>Nombre</td>
+                      <td>Cantidad</td>
+                      <td>Precio</td>
+                      <td>Subtotal</td>
+                    </tr>
+                  </thead>
+                    <tbody v-for="(item,indeX) in items.item" :key="indeX">
+                      <tr>
+                        <td>{{ item.Nombre }}</td>
+                        <td><input type="number"
+                          v-model="item.Cantidad"
+                          @input="subtotalVenta(item)">
+                        </td>
+                        <td>{{ item.Precio }}</td>
+                        <td>{{ parseInt(item.Cantidad)*parseInt(item.Precio)}}</td>
+                      </tr>
+                    </tbody>
+                </v-table>
+  </div>
+  <div class="image-container">
+     <v-img src="../assets/NHR.png" style="padding: 2px 10px 2px 10px;"></v-img>
+     <h4>Adicional</h4><input type="number" style="border: solid black 2px; border-radius: 5px; "><br>
+     <h4>Mano de obra</h4><input type="number" style="border: solid black 2px; border-radius: 5px;"><br>
+     <br><h2>Precio Total</h2>
+     <input type="text" name="" id="">
+  </div>
+</div>
+              
+            </v-card>
+          </v-window-item>
+        </v-window>
+      </v-card>
+<!--       <div>
     <v-card>
       <v-toolbar
         color="blue"
       >
         <v-toolbar-title>User Profile</v-toolbar-title>
       </v-toolbar>
-      <div class="d-flex flex-row">
+      <div>
         <v-tabs
           v-model="tab"
           direction="vertical"
@@ -59,18 +116,6 @@
             </v-icon>
             NHR
           </v-tab>
-          <v-tab value="option-2">
-            <v-icon start>
-              mdi mdi-truck
-            </v-icon>
-            NQR
-          </v-tab>
-          <v-tab value="option-3">
-            <v-icon start>
-              mdi mdi-truck
-            </v-icon>
-            NPR
-          </v-tab>
         </v-tabs>
         <v-window v-model="tab">
           <v-window-item value="option-1">
@@ -78,14 +123,28 @@
             <v-card flat>
               <div class="content-container">
               
-            <div class="table-container">
-  <v-data-table-virtual
-    :headers="headers"
-    :items="virtualDesserts"
-    class="elevation-1"
-    height="650"
-    item-value="name"
-  ></v-data-table-virtual>
+  <div class="table-container">
+                <v-table v-for="(items,index) in desserts" :key="index">
+                  <thead>
+                    <tr>
+                      <td>Nombre</td>
+                      <td>Cantidad</td>
+                      <td>Precio</td>
+                      <td>Subtotal</td>
+                    </tr>
+                  </thead>
+                    <tbody v-for="(item,indeX) in items.item" :key="indeX">
+                      <tr>
+                        <td>{{ item.Nombre }}</td>
+                        <td><input type="number"
+                          v-model="item.Cantidad"
+                          @input="subtotalVenta(item)">
+                        </td>
+                        <td>{{ item.Precio }}</td>
+                        <td>{{ parseInt(item.Cantidad)*parseInt(item.Precio)}}</td>
+                      </tr>
+                    </tbody>
+                </v-table>
   </div>
   <div class="image-container">
      <v-img src="../assets/NHR.png" style="padding: 2px 10px 2px 10px;"></v-img>
@@ -93,12 +152,12 @@
      <h4>Mano de obra</h4><input type="number" style="border: solid black 2px; border-radius: 5px;"><br>
      <br><h2>Precio Total</h2>
      <input type="text" name="" id="">
-
   </div>
 </div>
               
             </v-card>
           </v-window-item>
+        </v-window>
           <v-window-item value="option-2">
             <v-card flat>
               <v-card-text>
@@ -137,14 +196,14 @@
               </v-card-text>
             </v-card>
           </v-window-item>
-        </v-window>
+
       </div>
     </v-card>
-  </div>
+  </div> -->
   </div>
   </template>
   <script>
-import { collection, getDocs } from 'firebase/firestore';
+import { collection,  getDocs } from 'firebase/firestore';
 import db from '../firebase/init.js'; // Importa tu configuración de Firebase
 
     export default {
@@ -152,45 +211,21 @@ import db from '../firebase/init.js'; // Importa tu configuración de Firebase
         tab: 'option-1',
         headers: [
         {
-          title: 'Material',
-          align: 'start',
-          sortable: false,
-          key: 'Nombre',
-        },
-        { title: 'Cantidad', align: 'center', key: 'Cantidad' },
-        { title: 'Precio', align: 'center', key: 'Precio' },
-        
+          /*     title: 'Dessert (100g serving)', */
+              align: 'start',
+              sortable: false,
+              key: 'name',
+            },
+            { title: 'Id', key: 'Id' },
+            { title: 'Nombre', key: 'Nombre' },
+            { title: 'Cantidad', key: 'Cantidad' },
+            { title: 'Precio', key: 'Precio' },
       ],
-      desserts: [
-        {
-          Nombre: 0,
-          Cantidad:0,
-          Precio:0
-        },
-        {
-          Nombre: 0,
-          Cantidad:0,
-          Precio:0
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: '7',
-        },
-       
-      ],
+      desserts: [],
     }),
     computed: {
       virtualDesserts () {
-        return [...Array("5").keys()].map(i => {
-          const dessert = { ...this.desserts[i % 10] }
-          dessert.name = `${dessert.name} #${i}`
-
-          return dessert
-        })
+       return this.desserts
       },
     },
     created() {
@@ -200,14 +235,17 @@ methods: {
   async loadDataFromFirebase() {
     const q = collection(db, 'Furgones'); // Reemplaza 'tu_colección' con el nombre de tu colección en Firebase
     const snapshot = await getDocs(q);
-
-    this.desserts = snapshot.docs.map((doc) => ({
-      keyNombre: doc.Id,
-      Nombre: doc.data().Nombre,
-      Cantidad: doc.data().Cantidad,
-      Precio: doc.data().Precio,
-    }));
-  }
+    snapshot.forEach((doc)=>{
+      this.desserts.push({
+        item:doc.data().item,
+        Furgon:doc.data().Furgon,
+      })
+    })
+  },
+  subtotalVenta(item){
+      item.Subtotal = parseInt(item.Cantidad) * parseInt(item.Precio)
+      console.log(item.Subtotal)
+  },
   }}
   </script>
   <style scoped>

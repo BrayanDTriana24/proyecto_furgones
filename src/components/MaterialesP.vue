@@ -201,7 +201,8 @@
       <v-card class="mt-2 pa-2">
                 <pre>{{ selected }}</pre>
                 </v-card>
-                <v-btn  @click="addToCart" color="#2962FF">Agregar</v-btn>
+                <v-text-field v-model="furgonSlc"></v-text-field>
+                <v-btn  @click="guardarMateriales()" color="#2962FF">Agregar</v-btn>
                 <v-card class="mt-2 pa-2">
                    <h3>Materiales:</h3>
                  <ul>
@@ -215,8 +216,7 @@
    
    
     <script>
-   
-    import db from '../firebase/init.js'
+import db from '../firebase/init.js'
     import {collection, getDocs, query, addDoc, updateDoc, doc, deleteDoc} from  'firebase/firestore'
     /* import jspdf from 'jspdf' */
     /* require (jspdf.autotable) */
@@ -227,6 +227,7 @@
     /*     }, */
        
         data: () => ({
+          furgonSlc:'',
          return: [],
          selected: [],
           cart: [],
@@ -247,6 +248,7 @@
             { title: 'Opciones', key: 'actions', sortable: false },
           ],
           desserts: [],
+          selectedBD:[],
           editedIndex: -1,
           editedItem: {
             keyid: 0,
@@ -341,13 +343,13 @@
             });
           },
 
-          async saveToDatabase(cartItems) {
+          /* async saveToDatabase(cartItems) {
   const furgonesColRef = collection(db, 'Furgones'); // Reemplaza 'Furgones' por el nombre real de tu colección
   const combinedData = {};
 
   // Combinar todos los elementos seleccionados en un solo objeto
   cartItems.forEach((item, index) => {
-    combinedData[`item${index + 1}`] = {
+    combinedData[`item${index}`] = {
       Id: item.Id,
       Nombre: item.Nombre,
       Cantidad: item.Cantidad,
@@ -360,6 +362,29 @@
     console.log('Elementos combinados agregados a la base de datos de "Furgones" con ID:', docRef.id);
   } catch (error) {
     console.error('Error al agregar elementos combinados a la base de datos de "Furgones":', error);
+  }
+}, */
+
+async guardarMateriales(){
+  const furgonesColRef = collection(db, 'Furgones');
+  this.selected.map((doc)=>{
+    const data = {
+      Precio:doc.Precio,
+      Nombre:doc.Nombre,
+      Cantidad:1,
+    }
+    this.selectedBD.push(data)
+  })
+  console.log(this.selectedBD)
+  const dataObj = {
+    item:this.selectedBD,
+    Furgon:this.furgonSlc,
+  }
+  try {
+    const refDoc = await addDoc(furgonesColRef,dataObj)
+    console.log(refDoc)
+  } catch (error){
+    console.error(error)
   }
 },
 
