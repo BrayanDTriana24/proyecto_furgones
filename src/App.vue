@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <v-navigation-drawer color="#2962FF" v-model="drawer" :rail="rail" permanent @click="rail = false" position="top">
+    <v-navigation-drawer color="#2962FF" v-model="drawer" :rail="rail" permanent @click="rail = false" position="top" v-if="sesionIniciada">
       <v-list dense nav >
         <v-list-item @click.stop="rail = !rail"
           prepend-icon="mdi mdi-microsoft-xbox-controller-menu"
           title="FURGOSANDER S. A. S"
           value="Menu"
           style="margin-top: 8px; margin-bottom: 8px; font-size: 20px"
-        ></v-list-item>
+          ></v-list-item>
        
         <v-divider></v-divider>
         <!--MENU-->
@@ -18,7 +18,8 @@
           value="Home"
           router-link to="../"
           style="margin-top: 20px;"
-        ></v-list-item>
+          
+          ></v-list-item>
 
        
         <!--SUB MENU-->
@@ -28,7 +29,8 @@
           prepend-icon="mmdi mdi-truck"
           value="Furgones"
           router-link to="/furgones"
-          style="margin-bottom: 1px;">
+          style="margin-bottom: 1px;"
+          >
             <v-list-item-content>
               <v-list-item-title >Furgones</v-list-item-title>
             </v-list-item-content>
@@ -44,7 +46,7 @@
           value="Prov"
           router-link to="/prov"
           style="margin-bottom: 1px"
-        ></v-list-item>
+          ></v-list-item>
 
         <v-list-item @click.stop="rail = !rail"
           prepend-icon="mdi mdi-null"
@@ -52,13 +54,10 @@
           value="Material"
           router-link to="/material"
           style="margin-bottom: 1px"
-        ></v-list-item>
-
-
-       
-
+          ></v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -66,13 +65,10 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
-  components: {
-    
-  },
 
   data() {
     return {
@@ -81,8 +77,11 @@ export default {
       openSubMenus: [], // Almacena los submenús abiertos
     };
   },
+  computed: {
+    ...mapState(['sesionIniciada']), // Mapear la variable sesionIniciada desde el store
+  },
   methods: {
-    
+    // ...
   },
 };
 </script>

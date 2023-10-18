@@ -9,6 +9,7 @@
       </template>
   
       <v-list-item
+          v-if="!sesionIniciada"
           prepend-icon="mdi mdi-login"
           title="Iniciar Sesión"
           value="Login"
@@ -16,13 +17,17 @@
           style="margin-top: 5px;"
         ></v-list-item>
 
-        <v-list-item
-          prepend-icon="mdi mdi-logout"
-          title="Cerrar Sesión"
-          value="Cerrar_sesion"
-          router-link to="/"
-          style="margin-top: 5px;"
-        ></v-list-item>
+        <!-- Mostrar el elemento de cerrar sesión solo si la sesión está iniciada -->
+      <v-list-item
+        v-if="sesionIniciada"
+        prepend-icon="mdi mdi-logout"
+        title="Cerrar Sesión"
+        value="Logout"
+        @click="cerrarSesion"
+        style="margin-top: 5px;"
+      ></v-list-item>
+
+        
   
       <template v-if="$vuetify.display.smAndUp">
         <v-divider
@@ -85,6 +90,8 @@
   </template>
   
   <script>
+  import { mapState } from 'vuex';
+
     export default {
       data: () => ({
         cards: [
@@ -92,5 +99,17 @@
           
         ],
       }),
+      computed: {
+    ...mapState(['sesionIniciada']),
+    },
+    methods: {
+    cerrarSesion() {
+      // Aquí debes implementar la lógica para cerrar la sesión y redirigir al usuario a la vista App.vue
+      // Puedes hacer esto estableciendo sesionIniciada en false y luego redirigiendo al usuario a la vista deseada.
+      // Por ejemplo:
+      this.$store.commit('setSesionIniciada', false);
+      this.$router.push('/'); // Asegúrate de que la ruta sea la correcta.
+    },
+      },
     }
   </script>

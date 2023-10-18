@@ -14,7 +14,7 @@
           prepend-icon="mdi mdi-logout"
           title="Cerrar Sesión"
           value="Cerrar_sesion"
-          router-link to="/"
+          @click="cerrarSesion"
           style="margin-top: 5px;"
         ></v-list-item>
   
@@ -268,6 +268,14 @@
   
   
       methods: {
+        cerrarSesion() {
+            // Aquí debes implementar la lógica para cerrar la sesión y redirigir al usuario a la vista App.vue
+            // Puedes hacer esto estableciendo sesionIniciada en false y luego redirigiendo al usuario a la vista deseada.
+            // Por ejemplo:
+            this.$store.commit('setSesionIniciada', false);
+            this.$router.push('/'); // Asegúrate de que la ruta sea la correcta.
+          },
+
           async createUser(){
           const colRef = collection(db, 'proveedores')
           const dataObj = {

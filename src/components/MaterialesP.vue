@@ -14,7 +14,7 @@
             prepend-icon="mdi mdi-logout"
             title="Cerrar Sesión"
             value="Cerrar_sesion"
-            router-link to="/"
+            @click="cerrarSesion"
             style="margin-top: 5px;"
           ></v-list-item>
    
@@ -199,8 +199,22 @@
         </template>
       </v-data-table>
       <v-card class="mt-2 pa-2">
-                <pre>{{ selected }}</pre>
-                </v-card>
+        <v-table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody v-for="(material,index) in selected" :key="index">
+            <tr>
+              <td>{{ material.Nombre }}</td>
+              <td><input type="number" v-model="material.Cantidad"></td>
+            </tr>
+          </tbody>
+        </v-table>
+      </v-card>
+      
                 <v-text-field v-model="furgonSlc"></v-text-field>
                 <v-btn  @click="guardarMateriales()" color="#2962FF">Agregar</v-btn>
                 <v-card class="mt-2 pa-2">
@@ -289,6 +303,13 @@ import db from '../firebase/init.js'
        
    
         methods: {
+          cerrarSesion() {
+            // Aquí debes implementar la lógica para cerrar la sesión y redirigir al usuario a la vista App.vue
+            // Puedes hacer esto estableciendo sesionIniciada en false y luego redirigiendo al usuario a la vista deseada.
+            // Por ejemplo:
+            this.$store.commit('setSesionIniciada', false);
+            this.$router.push('/'); // Asegúrate de que la ruta sea la correcta.
+          },
             async createUser(){
             const colRef = collection(db, 'Materiales')
             const dataObj = {
@@ -371,7 +392,7 @@ async guardarMateriales(){
     const data = {
       Precio:doc.Precio,
       Nombre:doc.Nombre,
-      Cantidad:1,
+      Cantidad:doc.Cantidad,
     }
     this.selectedBD.push(data)
   })
@@ -381,8 +402,8 @@ async guardarMateriales(){
     Furgon:this.furgonSlc,
   }
   try {
-    const refDoc = await addDoc(furgonesColRef,dataObj)
-    console.log(refDoc)
+    await addDoc(furgonesColRef,dataObj)
+    this.limpiar()
   } catch (error){
     console.error(error)
   }
@@ -468,6 +489,10 @@ console.log('Cart:', this.cart);
             }
             this.close()
           },
+          limpiar(){
+            this.selected = []
+            this.furgonSlc = ''
+          }
    
         },
    

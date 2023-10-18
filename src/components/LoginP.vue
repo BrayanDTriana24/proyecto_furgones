@@ -2,18 +2,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet">
-<v-toolbar  
-      dark
-      prominent
-      color="#2962FF"
-  v-img src="../assets/furgones.jpg">
-      <template v-slot:prepend>
-        
-      </template>
-            
-  
-      
-    </v-toolbar>
 <v-card 
 class="mx-auto pa-12 pb-8"
 elevation="9"
@@ -81,13 +69,16 @@ export default {
     onSubmit() {
       this.error = false;
 
-      if (this.username === 'admin' && this.password === '123456') {
-
-        this.$router.push('/')
-      } else {
-        this.error = true;
-      }
-    },
+      if ((this.username === 'admin' && this.password === 'admin') || (this.username === 'David' && this.password === '1234')) {
+      // Establece la variable de sesión iniciada a true
+      // Redirige al usuario a la página principal
+      this.$store.commit('setSesionIniciada', true);
+      
+      this.$router.push('/');
+    } else {
+      this.error = true;
+    }
+  },
   },
 };
 </script>
